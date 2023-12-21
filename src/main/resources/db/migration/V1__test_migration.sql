@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS brand (
+    ID int NOT NULL PRIMARY KEY,
+    NAME varchar(20)
+);
+
+insert into brand (ID, NAME) values (1, 'ZARA');
+
+CREATE TABLE IF NOT EXISTS productPrice (
+    ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    BRAND_ID int,
+    START_DATE timestamp,
+    END_DATE timestamp,
+    PRICE_LIST int,
+    PRODUCT_ID int,
+    PRIORITY int,
+    PRICE DOUBLE PRECISION,
+    CURR varchar(20),
+    CONSTRAINT FK_BRAND_ID foreign key (BRAND_ID) references brand(ID)
+);
+
+insert into productPrice (BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, PRICE,CURR)
+values (1, '2020-06-14 00:00:00', '2020-12-31 23:59:59', 1, 35455, 0, 35.50,'EUR');
+
+insert into productPrice (BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, PRICE,CURR)
+values (1, '2020-06-14 15:00:00', '2020-06-14 18:30:00', 1, 35455, 1, 25.45,'EUR');
+
+insert into productPrice (BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, PRICE,CURR)
+values (1, '2020-06-15 00:00:00', '2020-06-15 11:00:00', 1, 35455, 1, 30.50,'EUR');
+
+insert into productPrice (BRAND_ID, START_DATE, END_DATE, PRICE_LIST, PRODUCT_ID, PRIORITY, PRICE,CURR)
+values (1, '2020-06-15 16:00:00', '2020-12-31 23:59:59', 1, 35455, 1, 38.95,'EUR');
+
+
